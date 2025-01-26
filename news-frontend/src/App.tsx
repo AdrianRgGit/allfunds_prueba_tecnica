@@ -11,16 +11,36 @@ const App = () => {
         </nav>
       </header>
 
-      <section>
-        <article>
-          <h2>Última noticia</h2>
+      <section className="grid grid-cols-4 grid-rows-3">
+        <article className="col-span-3">
+          <h2>ÚLTIMA NOTICIA</h2>
+          <p>Descripción</p>
+          <button>Ver noticia</button>
         </article>
 
         <article>
           <h2>Noticias archivadas</h2>
         </article>
 
-        <article>
+        <article className="grid-cols-3 bg-red-500">
+          <div>
+            <h3>Noticia</h3>
+            <p>Descripción</p>
+            <button>Ver noticia</button>
+          </div>
+
+          <div>
+            <h3>Noticia</h3>
+            <p>Descripción</p>
+            <button>Ver noticia</button>
+          </div>
+
+          <div>
+            <h3>Noticia</h3>
+            <p>Descripción</p>
+            <button>Ver noticia</button>
+          </div>
+
           <div>
             <h3>Noticia</h3>
             <p>Descripción</p>
