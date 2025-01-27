@@ -14,7 +14,7 @@ const CustomButton: FC<CustomButtonProps> = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`rounded px-4 py-2 transition-opacity duration-150 hover:opacity-100`}
+      className={`cursor-pointer rounded bg-blue-200 px-4 py-2 transition-opacity duration-200 hover:opacity-80 ${className} border`}
       {...props}
     >
       {children}

@@ -16,8 +16,8 @@ const NewsCard: FC<NewsCardProps> = ({
       <p>{description}</p>
       <p className="text-sm text-gray-500">{content}</p>
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-x-2">
+      <div className="flex justify-between">
+        <div className="flex items-center gap-x-2 self-end">
           <div className="flex items-center gap-x-1">
             <Pencil size={12} />
             <small>{author}</small>
@@ -27,6 +27,7 @@ const NewsCard: FC<NewsCardProps> = ({
             <small>{date}</small>
           </div>
         </div>
+
         <CustomButton>
           <span>Archivar noticia</span>
         </CustomButton>
