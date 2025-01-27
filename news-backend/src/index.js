@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // NOTE: YA QUE ES UNA PRUEBA TÉCNICA PERMITO TODAS LAS URLS
-const allowedOrigins = ["*"];
+const allowedOrigins = "*";
 
 app.use(
   cors({
