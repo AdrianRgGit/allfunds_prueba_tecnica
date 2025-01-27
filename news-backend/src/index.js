@@ -4,14 +4,17 @@ const dotenv = require("dotenv");
 const newsRoutes = require("./routes/newsRoutes");
 const cors = require("cors");
 
+// NOTE: CONFIGURACIÓN DE DOTENV PARA USAR VARIABLES DE ENTORNO
 dotenv.config();
 
+// NOTE: CONFIGURACIÓN DE EXPRESS Y PUERTO A UTILIZAR
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// NOTE: YA QUE ES UNA PRUEBA TÉCNICA PERMITO TODAS LAS URLS
+// NOTE: YA QUE ES UNA PRUEBA TÉCNICA PERMITO TODAS LAS URLS. EN LA APLICACIÓN ATLAS DE MONGODB TAMBIÉN LAS HE TENIDO QUE PERMITIR TODAS
 const allowedOrigins = "*";
 
+// NOTE: CONFIGURACIÓN DE CORS
 app.use(
   cors({
     origin: allowedOrigins,
@@ -19,10 +22,13 @@ app.use(
   })
 );
 
+// NOTE: CONFIGURACIÓN DE MIDDLEWARE
 app.use(express.json());
 
+// NOTE: CONFIGURACIÓN DE RUTAS PRINCIPALES
 app.use("/api/news", newsRoutes);
 
+// NOTE: CONEXIÓN A MONGODB
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -31,10 +37,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => {
-  res.send("Backend working");
-});
-
+// NOTE: INICIALIZACIÓN DEL SERVIDOR
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });

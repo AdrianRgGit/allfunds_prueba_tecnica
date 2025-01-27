@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// NOTE: ESQUEMA DE LAS NOTICIAS
 const newsSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
@@ -8,6 +9,7 @@ const newsSchema = new mongoose.Schema(
     author: { type: String, required: true },
     archiveDate: { type: Date, default: null },
   },
+  // NOTE: AGREGA FECHAS DE CREACIÓN Y ACTUALIZACIÓN
   { timestamps: true }
 );
 
