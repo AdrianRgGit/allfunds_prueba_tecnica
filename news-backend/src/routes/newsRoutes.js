@@ -3,6 +3,7 @@ const NewsController = require("../controllers/NewsController");
 const router = express.Router();
 
 router.get("/getallnews", NewsController.getAllNews);
+router.get("/getarchivednews", NewsController.getArchivedNews);
 
 router.post("/createnew", NewsController.createNew);
 
