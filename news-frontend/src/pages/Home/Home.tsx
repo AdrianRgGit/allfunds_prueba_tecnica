@@ -1,4 +1,4 @@
-import NewsCard from "../../components/Home/NewsCard/NewsCard";
+import NewsCard from "../../components/News/NewsCard/NewsCard";
 
 const Home = () => {
   return (

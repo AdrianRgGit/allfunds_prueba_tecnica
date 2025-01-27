@@ -1,7 +1,7 @@
 import { Calendar, Clock, Pencil } from "lucide-react";
 import CustomButton from "../../Ui/CustomButton/CustomButton";
 import { FC } from "react";
-import { NewsCardProps } from "../../../types/home/newsCard";
+import { NewsCardProps } from "../../../types/news/newsCard";
 import CustomSmallElementWrapper from "../../Ui/CustomSmallElementWrapper/CustomSmallElementWrapper";
 
 const NewsCard: FC<NewsCardProps> = ({
