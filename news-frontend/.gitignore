@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Dependencias de producción de NPM
+/package-lock.json
+/pnmp-lock.yaml
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
