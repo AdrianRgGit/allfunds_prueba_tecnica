@@ -4,6 +4,7 @@ import { CustomButtonProps } from "../../../types/ui/customButton";
 const CustomButton: FC<CustomButtonProps> = ({
   type = "button",
   disabled = false,
+  bg = "bg-blue-500",
   children,
   className,
   onClick,
@@ -14,7 +15,7 @@ const CustomButton: FC<CustomButtonProps> = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`cursor-pointer rounded bg-blue-200 px-4 py-2 transition-opacity duration-200 hover:opacity-80 ${className} border`}
+      className={`cursor-pointer rounded border px-4 py-2 text-white transition-opacity duration-200 hover:opacity-80 ${bg} ${className}`}
       {...props}
     >
       {children}
