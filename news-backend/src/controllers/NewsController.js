@@ -4,16 +4,24 @@ const NewsController = {
   async getAllNews(req, res) {
     try {
       const { page = 1, limit = 5 } = req.query;
-
       const skip = (page - 1) * limit;
 
-      // NOTE: ORDENO PRIMERO POR CREADO EN ORDEN DESCENDENTE Y LUEGO POR ID PARA EVITAR DUPLICADOS POR CULPA DE LA PAGINACIÓN.
+      const totalNews = await News.countDocuments();
+
+      // NOTE: ORDENO POR FECHA DESCENDENTE Y POR ID ASCENDENTE PARA EVITAR QUE LA PAGINACIÓN ME HAGA DUPLICADOS YA QUE CON LOS SEEDERS AL TENER TODOS LA MISMA FECHA ME DABAN ERRORES
       const news = await News.find()
         .sort({ createdAt: -1, _id: 1 })
         .skip(skip)
         .limit(parseInt(limit));
 
-      res.status(200).json(news);
+      const totalPages = Math.ceil(totalNews / limit);
+
+      res.status(200).json({
+        news,
+        currentPage: page,
+        totalPages,
+        totalNews,
+      });
     } catch (error) {
       res.status(500).json({ message: "Error al obtener las noticias", error });
     }
