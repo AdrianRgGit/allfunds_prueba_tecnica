@@ -2,6 +2,8 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import CustomTextField from "../../Ui/CustomTextField/CustomTextField";
 import CustomButton from "../../Ui/CustomButton/CustomButton";
+import { useNewsStore } from "../../../store/newsStore";
+import { useNavigate } from "react-router-dom";
 
 const NewsSchema = Yup.object({
   title: Yup.string(),
@@ -10,6 +12,9 @@ const NewsSchema = Yup.object({
 });
 
 const NewsForm = () => {
+  const { createNew } = useNewsStore();
+  const navigate = useNavigate();
+
   const initialValues = {
     title: "",
     description: "",
@@ -17,8 +22,10 @@ const NewsForm = () => {
   };
 
   const handleSubmit = (values: any) => {
-    console.log(values);
+    createNew(values);
+    navigate("/");
   };
+
   return (
     <Formik
       initialValues={initialValues}

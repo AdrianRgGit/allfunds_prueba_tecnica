@@ -10,8 +10,6 @@ const Home = () => {
 
   useEffect(() => {
     getAllNews(localPage);
-    console.log("Página actual:", localPage);
-    console.log("Total páginas:", totalPages);
   }, [localPage, getAllNews]);
 
   const handleLoadMore = () => {
