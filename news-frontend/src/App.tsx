@@ -1,9 +1,10 @@
+import NewsCard from "./components/Home/NewsCard/NewsCard";
 import CustomLink from "./components/Ui/CustomLink/CustomLink";
 
 const App = () => {
   return (
     <main className="h-screen bg-gray-100 p-2">
-      <header className="w-full">
+      <header className="mb-2 w-full">
         <h1 className="mb-2 text-3xl font-bold">NOTICIARIO SEMANAL</h1>
         <nav className="space-x-4 border-b border-gray-500">
           <CustomLink href="#" title="Noticias" />
@@ -11,16 +12,8 @@ const App = () => {
         </nav>
       </header>
 
-      <section className="grid grid-cols-4 grid-rows-3">
-        <article className="col-span-3">
-          <h2>ÚLTIMA NOTICIA</h2>
-          <p>Descripción</p>
-          <button>Ver noticia</button>
-        </article>
-
-        <article>
-          <h2>Noticias archivadas</h2>
-        </article>
+      <section className="mx-auto flex h-screen w-[80%] flex-col gap-y-2 overflow-y-auto">
+        <NewsCard />
 
         <article className="grid-cols-3 bg-red-500">
           <div>
