@@ -3,6 +3,7 @@ import NewsCard from "../../components/News/NewsCard/NewsCard";
 import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
 import { useNewsStore } from "../../store/newsStore";
 import CustomButton from "../../components/Ui/CustomButton/CustomButton";
+import Error from "../Error/Error";
 
 const Archive = () => {
   const { archivedNews, totalPages, loading, error, getAllArchivedNews } =
@@ -24,7 +25,7 @@ const Archive = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <Error error={error} />;
   }
 
   return (

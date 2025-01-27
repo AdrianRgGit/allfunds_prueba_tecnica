@@ -3,6 +3,7 @@ import { useNewsStore } from "../../store/newsStore";
 import NewsCard from "../../components/News/NewsCard/NewsCard";
 import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
 import CustomButton from "../../components/Ui/CustomButton/CustomButton";
+import Error from "../Error/Error";
 
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
@@ -23,7 +24,7 @@ const Home = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <Error error={error} />;
   }
 
   return (
