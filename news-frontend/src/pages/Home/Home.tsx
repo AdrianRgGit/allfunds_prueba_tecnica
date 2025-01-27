@@ -1,50 +1,36 @@
+import { useEffect } from "react";
+import { useNewsStore } from "../../store/newsStore";
 import NewsCard from "../../components/News/NewsCard/NewsCard";
+import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
 
 const Home = () => {
+  const { news, loading, error, getAllNews } = useNewsStore();
+
+  useEffect(() => {
+    getAllNews();
+  }, [getAllNews]);
+
+  if (loading) {
+    return <CustomLoadingSpinner />;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <main className="mx-auto flex w-[80%] flex-col gap-y-2 overflow-y-auto pr-1">
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
-      <NewsCard
-        title="Noticia"
-        description="Descripción"
-        content="Contenido"
-        author="Autor"
-        date="Fecha"
-      />
+      {news.map((newsItem) => (
+        <NewsCard
+          key={newsItem._id}
+          title={newsItem.title}
+          description={newsItem.description}
+          content={newsItem.content}
+          author={newsItem.author}
+          archivedDate={newsItem.archivedDate}
+          date={new Date(newsItem.createdAt).toLocaleDateString()}
+        />
+      ))}
     </main>
   );
 };
