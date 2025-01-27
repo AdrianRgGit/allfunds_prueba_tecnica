@@ -1,5 +1,6 @@
-import NewsCard from "./components/Home/NewsCard/NewsCard";
-import CustomLink from "./components/Ui/CustomLink/CustomLink";
+import NewsCard from "../components/Home/NewsCard/NewsCard";
+import CustomLink from "../components/Ui/CustomLink/CustomLink";
+
 
 const App = () => {
   return (
