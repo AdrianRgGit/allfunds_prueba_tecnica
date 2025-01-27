@@ -6,4 +6,6 @@ router.get("/getallnews", NewsController.getAllNews);
 
 router.post("/createnew", NewsController.createNew);
 
+router.put("/archivenew/:id", NewsController.archiveNew);
+
 module.exports = router;
