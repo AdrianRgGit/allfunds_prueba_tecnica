@@ -4,6 +4,7 @@ import { FC } from "react";
 import { NewsCardProps } from "../../../types/news/newsCard";
 import CustomSmallElementWrapper from "../../Ui/CustomSmallElementWrapper/CustomSmallElementWrapper";
 import { useNewsStore } from "../../../store/newsStore";
+import { motion } from "framer-motion";
 
 const NewsCard: FC<NewsCardProps> = ({
   id,
@@ -23,11 +24,17 @@ const NewsCard: FC<NewsCardProps> = ({
   const handleDelete = (id: string) => {
     deleteNew(id);
   };
-  
+
   return (
-    <article className="space-y-2 rounded border p-2 shadow">
+    <motion.article
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="group space-y-2 rounded border p-2 shadow"
+    >
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold">{title}</h2>
+        <h2 className="text-2xl font-bold transition-colors duration-200 group-hover:text-blue-500">
+          {title}
+        </h2>
         {archivedDate ? (
           <CustomSmallElementWrapper>
             <Clock size={12} />
@@ -62,7 +69,7 @@ const NewsCard: FC<NewsCardProps> = ({
           </CustomButton>
         )}
       </div>
-    </article>
+    </motion.article>
   );
 };
 

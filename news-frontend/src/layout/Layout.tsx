@@ -14,11 +14,11 @@ const Layout: FC<LayoutProps> = ({ children }) => {
             animate={{ opacity: 1, y: 0 }}
             className="mb-6 text-6xl font-black tracking-tight text-white"
           >
-            <h1>Noticiario Semanal</h1>
+            El Noticiario Semanal
           </motion.h1>
           <nav className="flex max-h-8 gap-8 text-lg">
             <CustomLink href="/" title="Inicio" />
-            <CustomLink href="/archive-news" title="Noticias Archivadas" />
+            <CustomLink href="/archive" title="Noticias Archivadas" />
             <CustomLink href="/create-new" title="Publicar" />
           </nav>
         </div>
