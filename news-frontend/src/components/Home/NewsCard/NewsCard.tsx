@@ -1,3 +1,5 @@
+import { Calendar, Pencil } from "lucide-react";
+
 const NewsCard = () => {
   return (
     <article className="space-y-2 rounded border p-2 shadow">
@@ -13,9 +15,15 @@ const NewsCard = () => {
         aliquam molestiae, nisi voluptates?
       </p>
       <div className="flex justify-between">
-        <div className="space-x-2">
-          <small>Autor</small>
-          <small>fecha publicación</small>
+        <div className="flex items-center gap-x-2">
+          <div className="flex items-center gap-x-1">
+            <Pencil size={12} />
+            <small>Autor</small>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <Calendar size={12} />
+            <small>Fecha publicación</small>
+          </div>
         </div>
         <button>Ver noticia</button>
       </div>
