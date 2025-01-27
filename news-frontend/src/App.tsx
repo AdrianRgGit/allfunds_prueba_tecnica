@@ -13,7 +13,13 @@ const App = () => {
       </header>
 
       <section className="mx-auto flex h-screen w-[80%] flex-col gap-y-2 overflow-y-auto">
-        <NewsCard />
+        <NewsCard
+          title="Noticia"
+          description="Descripción"
+          content="Contenido"
+          author="Autor"
+          date="Fecha"
+        />
 
         <article className="grid-cols-3 bg-red-500">
           <div>
