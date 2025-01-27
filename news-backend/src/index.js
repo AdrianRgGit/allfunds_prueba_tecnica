@@ -2,11 +2,22 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const newsRoutes = require("./routes/newsRoutes");
+const cors = require("cors");
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// NOTE: YA QUE ES UNA PRUEBA TÉCNICA PERMITO TODAS LAS URLS
+const allowedOrigins = ["*"];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 app.use(express.json());
 
