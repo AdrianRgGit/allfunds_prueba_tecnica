@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useNewsStore } from "../../store/newsStore";
 import NewsCard from "../../components/News/NewsCard/NewsCard";
 import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
+import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
-  const [localPage, setLocalPage] = useState(1); // Controla la página local
+  const [localPage, setLocalPage] = useState(1);
 
   useEffect(() => {
     getAllNews(localPage);
@@ -44,13 +45,9 @@ const Home = () => {
       ))}
 
       {localPage < totalPages && (
-        <button
-          type="button"
-          onClick={handleLoadMore}
-          className="mt-4 cursor-pointer rounded bg-gray-300 px-4 py-2"
-        >
+        <CustomButton bg="bg-gray-400" onClick={handleLoadMore}>
           Ver más
-        </button>
+        </CustomButton>
       )}
     </main>
   );
