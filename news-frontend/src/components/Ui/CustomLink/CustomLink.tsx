@@ -5,7 +5,7 @@ const CustomLink: FC<CustomLinkProps> = ({ href, title, className }) => {
   return (
     <a
       href={href}
-      className={`transition-colors duration-200 hover:text-blue-500 ${className}`}
+      className={`border-b-2 border-transparent font-medium text-white hover:border-white ${className}`}
     >
       {title}
     </a>
