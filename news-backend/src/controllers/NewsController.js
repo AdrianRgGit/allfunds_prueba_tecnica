@@ -3,49 +3,45 @@ const News = require("../models/News");
 const NewsController = {
   async getAllNews(req, res) {
     try {
-      const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+      const { page = 1, limit = 5 } = req.query;
+
       const skip = (page - 1) * limit;
 
+      // NOTE: ORDENO PRIMERO POR CREADO EN ORDEN DESCENDENTE Y LUEGO POR ID PARA EVITAR DUPLICADOS POR CULPA DE LA PAGINACIÓN.
       const news = await News.find()
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: -1, _id: 1 })
         .skip(skip)
-        .limit(limit);
+        .limit(parseInt(limit));
 
-      const totalNews = await News.countDocuments();
-
-      res.status(200).json({
-        news,
-        currentPage: page,
-        totalPages: Math.ceil(totalNews / limit),
-        totalNews,
-      });
-    } catch (err) {
-      console.error("Error fetching news:", err);
-      res.status(500).json({ message: "Error fetching news", error: err });
+      res.status(200).json(news);
+    } catch (error) {
+      res.status(500).json({ message: "Error al obtener las noticias", error });
     }
   },
 
   async getArchivedNews(req, res) {
     try {
       const page = parseInt(req.query.page) || 1;
-      const limit = parseInt(req.query.limit) || 10;
+      const limit = 5;
       const skip = (page - 1) * limit;
 
       const news = await News.find({ archiveDate: { $ne: null } })
         .sort({
-          archiveDate: -1,
+          createdAt: -1,
+          _id: 1,
         })
         .skip(skip)
         .limit(limit);
 
-      const totalNews = await News.countDocuments();
+      const totalArchivedNews = await News.countDocuments({
+        archiveDate: { $ne: null },
+      });
 
       res.status(200).json({
         news,
         currentPage: page,
-        totalPages: Math.ceil(totalNews / limit),
-        totalNews,
+        totalPages: Math.ceil(totalArchivedNews / limit),
+        totalNews: totalArchivedNews,
       });
     } catch (err) {
       console.error("Error fetching archived news:", err);
