@@ -66,12 +66,6 @@ export const useNewsStore = create<NewsStore>((set) => ({
       if (!response.ok) {
         throw new Error("Failed to create news");
       }
-
-      const data = await response.json();
-
-      set((state) => ({
-        news: [data, ...state.news],
-      }));
     } catch (error) {
       console.error(error);
       set({ error: "Error creating news" });
