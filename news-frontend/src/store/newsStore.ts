@@ -4,16 +4,25 @@ import { NewsStore } from "../types/store/newsStoreTypes";
 export const useNewsStore = create<NewsStore>((set) => ({
   news: [],
   archivedNews: [],
+  currentPage: 1,
+  totalPages: 0,
   loading: false,
   error: null,
 
-  getAllNews: async () => {
+  getAllNews: async (page = 1, limit = 3) => {
     set({ loading: true });
     try {
-      const response = await fetch("http://localhost:5000/api/news/getallnews");
-
+      const response = await fetch(
+        `http://localhost:5000/api/news/getallnews?page=${page}&limit=${limit}`,
+      );
       const data = await response.json();
-      set({ news: data, loading: false });
+
+      set((state) => ({
+        news: [...state.news, ...data.news],
+        currentPage: data.currentPage,
+        totalPages: data.totalPages,
+        loading: false,
+      }));
     } catch (error) {
       set({ error: "Error fetching news", loading: false });
     }

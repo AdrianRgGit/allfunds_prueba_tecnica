@@ -1,24 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNewsStore } from "../../store/newsStore";
 import NewsCard from "../../components/News/NewsCard/NewsCard";
 import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
 
 const Home = () => {
-  const { news, loading, error, getAllNews } = useNewsStore();
+  const { news, totalPages, loading, error, getAllNews } = useNewsStore();
+  const [localPage, setLocalPage] = useState(1); // Controla la página local
 
   useEffect(() => {
-    getAllNews();
-  }, [getAllNews]);
+    getAllNews(localPage);
+  }, [localPage, getAllNews]);
 
-  if (loading) {
+  const handleLoadMore = () => {
+    if (localPage < totalPages) {
+      setLocalPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  if (loading && news.length === 0) {
     return <CustomLoadingSpinner />;
   }
 
   if (error) {
     return <div>{error}</div>;
   }
-
-  console.log(news);
 
   return (
     <main className="mx-auto flex w-[80%] flex-col gap-y-2 overflow-y-auto pr-1">
@@ -37,6 +42,16 @@ const Home = () => {
           date={new Date(newsItem.createdAt).toLocaleDateString()}
         />
       ))}
+
+      {localPage < totalPages && (
+        <button
+          type="button"
+          onClick={handleLoadMore}
+          className="mt-4 cursor-pointer rounded bg-gray-300 px-4 py-2"
+        >
+          Ver más
+        </button>
+      )}
     </main>
   );
 };
