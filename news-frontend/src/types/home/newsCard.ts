@@ -4,4 +4,5 @@ export interface NewsCardProps {
   content: string;
   author: string;
   date: string;
+  archivedDate?: string;
 }

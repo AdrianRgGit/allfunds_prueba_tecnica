@@ -5,7 +5,7 @@ import { LayoutProps } from "../types/layout/layout";
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex h-screen flex-col bg-gray-100 p-2">
-      <header className="mb-2 w-full flex-shrink-0">
+      <header className="mb-2 w-full">
         <h1 className="mb-2 text-3xl font-bold">NOTICIARIO SEMANAL</h1>
         <nav className="space-x-4 border-b border-gray-500">
           <CustomLink href="/" title="Noticias" />
