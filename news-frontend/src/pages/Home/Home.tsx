@@ -6,10 +6,12 @@ import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
-  const [localPage, setLocalPage] = useState(0);
+  const [localPage, setLocalPage] = useState(1);
 
   useEffect(() => {
     getAllNews(localPage);
+    console.log("Página actual:", localPage);
+    console.log("Total páginas:", totalPages);
   }, [localPage, getAllNews]);
 
   const handleLoadMore = () => {

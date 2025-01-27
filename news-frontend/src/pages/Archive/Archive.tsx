@@ -7,7 +7,7 @@ import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 const Archive = () => {
   const { archivedNews, totalPages, loading, error, getAllArchivedNews } =
     useNewsStore();
-  const [localPage, setLocalPage] = useState(0);
+  const [localPage, setLocalPage] = useState(1);
 
   useEffect(() => {
     getAllArchivedNews(localPage);

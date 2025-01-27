@@ -6,21 +6,25 @@ export const useNewsStore = create<NewsStore>((set) => ({
   archivedNews: [],
   currentPage: 1,
   totalPages: 0,
+  totalNews: 0,
+  totalArchivedNews: 0,
   loading: false,
   error: null,
 
-  getAllNews: async (page = 1, limit = 3) => {
+  getAllNews: async (page = 1) => {
     set({ loading: true });
     try {
       const response = await fetch(
-        `http://localhost:5000/api/news/getallnews?page=${page}&limit=${limit}`,
+        `http://localhost:5000/api/news/getallnews?page=${page}`,
       );
       const data = await response.json();
+      const { news, currentPage, totalPages, totalNews } = data;
 
       set((state) => ({
-        news: [...state.news, ...data.news],
-        currentPage: data.currentPage,
-        totalPages: data.totalPages,
+        news: [...state.news, ...news],
+        currentPage: currentPage,
+        totalPages: totalPages,
+        totalNews: totalNews,
         loading: false,
       }));
     } catch (error) {
@@ -28,19 +32,20 @@ export const useNewsStore = create<NewsStore>((set) => ({
     }
   },
 
-  getAllArchivedNews: async (page = 1, limit = 3) => {
+  getAllArchivedNews: async (page = 1) => {
     set({ loading: true });
     try {
       const response = await fetch(
-        `http://localhost:5000/api/news/getarchivednews?page=${page}&limit=${limit}`,
+        `http://localhost:5000/api/news/getarchivednews?page=${page}`,
       );
-
       const data = await response.json();
+      const { news, currentPage, totalPages, totalNews } = data;
 
       set((state) => ({
-        archivedNews: [...state.archivedNews, ...data.news],
-        currentPage: data.currentPage,
-        totalPages: data.totalPages,
+        archivedNews: [...state.archivedNews, ...news],
+        currentPage: currentPage,
+        totalPages: totalPages,
+        totalNews: totalNews,
         loading: false,
       }));
     } catch (error) {

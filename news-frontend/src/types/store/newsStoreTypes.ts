@@ -5,6 +5,8 @@ export interface NewsStore {
   archivedNews: NewsData[];
   currentPage: number;
   totalPages: number;
+  totalNews: number;
+  totalArchivedNews: number;
   loading: boolean;
   error: string | null;
 
