@@ -28,10 +28,25 @@ const NewsController = {
 
   async getArchivedNews(req, res) {
     try {
-      const news = await News.find({ archiveDate: { $ne: null } }).sort({
-        archiveDate: -1,
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 10;
+      const skip = (page - 1) * limit;
+
+      const news = await News.find({ archiveDate: { $ne: null } })
+        .sort({
+          archiveDate: -1,
+        })
+        .skip(skip)
+        .limit(limit);
+
+      const totalNews = await News.countDocuments();
+
+      res.status(200).json({
+        news,
+        currentPage: page,
+        totalPages: Math.ceil(totalNews / limit),
+        totalNews,
       });
-      res.status(200).json(news);
     } catch (err) {
       console.error("Error fetching archived news:", err);
       res
