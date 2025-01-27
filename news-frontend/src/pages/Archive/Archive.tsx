@@ -17,6 +17,15 @@ const Archive = () => {
         content="Contenido"
         author="Autor"
         date="Fecha"
+        archivedDate="Fecha de archivado"
+      />
+      <NewsCard
+        title="Noticia"
+        description="Descripción"
+        content="Contenido"
+        author="Autor"
+        date="Fecha"
+        archivedDate="Fecha de archivado"
       />
     </main>
   );

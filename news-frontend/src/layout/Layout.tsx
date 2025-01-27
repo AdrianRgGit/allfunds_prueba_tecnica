@@ -10,6 +10,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <nav className="space-x-4 border-b border-gray-500">
           <CustomLink href="/" title="Noticias" />
           <CustomLink href="/archive  " title="Noticias archivadas" />
+          <CustomLink href="/create-new  " title="Publicar una noticia" />
         </nav>
       </header>
       {children}
