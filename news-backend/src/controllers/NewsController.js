@@ -6,10 +6,13 @@ const NewsController = {
       const { page = 1, limit = 5 } = req.query;
       const skip = (page - 1) * limit;
 
-      const totalNews = await News.countDocuments();
+      // NOTE: Filtrar noticias que no tienen fecha de archivado
+      const totalNews = await News.countDocuments({
+        archiveDate: { $eq: null },
+      });
 
       // NOTE: ORDENO POR FECHA DESCENDENTE Y POR ID ASCENDENTE PARA EVITAR QUE LA PAGINACIÓN ME HAGA DUPLICADOS YA QUE CON LOS SEEDERS AL TENER TODOS LA MISMA FECHA ME DABAN ERRORES
-      const news = await News.find()
+      const news = await News.find({ archiveDate: { $eq: null } })
         .sort({ createdAt: -1, _id: 1 })
         .skip(skip)
         .limit(parseInt(limit));

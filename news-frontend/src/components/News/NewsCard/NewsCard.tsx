@@ -23,6 +23,7 @@ const NewsCard: FC<NewsCardProps> = ({
   const handleDelete = (id: string) => {
     deleteNew(id);
   };
+  
   return (
     <article className="space-y-2 rounded border p-2 shadow">
       <div className="flex items-center justify-between">

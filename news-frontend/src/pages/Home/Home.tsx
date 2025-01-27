@@ -3,6 +3,8 @@ import { useNewsStore } from "../../store/newsStore";
 import NewsCard from "../../components/News/NewsCard/NewsCard";
 import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/CustomLoadingSpinner";
 import CustomButton from "../../components/Ui/CustomButton/CustomButton";
+import Error from "../Error/Error";
+import NoNewsToShow from "../../components/News/NoNewsToShow/NoNewsToShow";
 
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
@@ -10,8 +12,6 @@ const Home = () => {
 
   useEffect(() => {
     getAllNews(localPage);
-    console.log("Página actual:", localPage);
-    console.log("Total páginas:", totalPages);
   }, [localPage, getAllNews]);
 
   const handleLoadMore = () => {
@@ -25,7 +25,11 @@ const Home = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <Error error={error} />;
+  }
+
+  if (news.length === 0) {
+    return <NoNewsToShow />;
   }
 
   return (
