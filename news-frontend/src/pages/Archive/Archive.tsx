@@ -4,6 +4,7 @@ import CustomLoadingSpinner from "../../components/Ui/CustomLoadingSpinner/Custo
 import { useNewsStore } from "../../store/newsStore";
 import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 import Error from "../Error/Error";
+import NoArchiveNewsToShow from "../../components/News/NoArchiveNewsToShow/NoArchiveNewsToShow";
 
 const Archive = () => {
   const { archivedNews, totalPages, loading, error, getAllArchivedNews } =
@@ -26,6 +27,10 @@ const Archive = () => {
 
   if (error) {
     return <Error error={error} />;
+  }
+
+  if (archivedNews.length === 0) {
+    return <NoArchiveNewsToShow />;
   }
 
   return (
