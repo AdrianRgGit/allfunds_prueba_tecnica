@@ -55,6 +55,22 @@ const NewsController = {
       res.status(500).json({ message: "Error archiving news", error: err });
     }
   },
+
+  async deleteNew(req, res) {
+    try {
+      const { id } = req.params;
+      const deletedNews = await News.findByIdAndDelete(id);
+      
+      if (!deletedNews) {
+        return res.status(404).json({ message: "New not found" });
+      }
+
+      res.status(200).json({ message: "New deleted successfully" });
+    } catch (err) {
+      console.error("Error deleting new:", err);
+      res.status(500).json({ message: "Error deleting new", error: err });
+    }
+  },
 };
 
 module.exports = NewsController;
