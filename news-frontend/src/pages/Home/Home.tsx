@@ -6,20 +6,24 @@ import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 import Error from "../Error/Error";
 import NoNewsToShow from "../../components/News/NoNewsToShow/NoNewsToShow";
 
+// NOTE: PÁGINA DE NOTICIAS (PRINCIPAL)
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
   const [localPage, setLocalPage] = useState(1);
 
+  // NOTE: OBTENER TODAS LAS NOTICIAS
   useEffect(() => {
     getAllNews(localPage);
   }, [localPage, getAllNews]);
 
+  // NOTE: CARGAR MAS NOTICIAS
   const handleLoadMore = () => {
     if (localPage < totalPages) {
       setLocalPage((prevPage) => prevPage + 1);
     }
   };
 
+  // NOTE: LOADING, ERROR Y NO HAY NOTICIAS
   if (loading && news.length === 0) {
     return <CustomLoadingSpinner />;
   }

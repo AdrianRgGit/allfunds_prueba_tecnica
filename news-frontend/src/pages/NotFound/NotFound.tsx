@@ -1,3 +1,4 @@
+// NOTE: PAGINA NO ENCONTRADA
 const NotFound = () => {
   return (
     <main className="flex h-[95vh] items-center justify-center">

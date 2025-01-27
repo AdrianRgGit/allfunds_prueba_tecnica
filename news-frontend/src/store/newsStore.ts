@@ -1,7 +1,10 @@
 import { create } from "zustand";
 import { NewsStore } from "../types/store/newsStoreTypes";
+import { API_URL } from "../utils/constants/api";
 
+// NOTE: UTILIZAMOS ZUSTAND PARA TENER UN ESTADO GLOBAL DE LAS NOTICIAS
 export const useNewsStore = create<NewsStore>((set) => ({
+  // NOTE: VALORES POR DEFECTO
   news: [],
   archivedNews: [],
   currentPage: 1,
@@ -11,12 +14,11 @@ export const useNewsStore = create<NewsStore>((set) => ({
   loading: false,
   error: null,
 
+  // NOTE: OBTENER TODAS LAS NOTICIAS
   getAllNews: async (page = 1) => {
     set({ loading: true });
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/news/getallnews?page=${page}`,
-      );
+      const response = await fetch(`${API_URL}/news/getallnews?page=${page}`);
       const data = await response.json();
       const { news, currentPage, totalPages, totalNews } = data;
 
@@ -32,20 +34,23 @@ export const useNewsStore = create<NewsStore>((set) => ({
     }
   },
 
+  // NOTE: OBTENER TODAS LAS NOTICIAS ARCHIVADAS
   getAllArchivedNews: async (page = 1) => {
     set({ loading: true });
     try {
       const response = await fetch(
-        `http://localhost:5000/api/news/getarchivednews?page=${page}`,
+        `${API_URL}/news/getarchivednews?page=${page}`,
       );
       const data = await response.json();
-      const { news, currentPage, totalPages, totalNews } = data;
+      const { news, currentPage, totalPages, totalArchivedNews } = data;
+
+      console.log(data);
 
       set((state) => ({
         archivedNews: [...state.archivedNews, ...news],
         currentPage: currentPage,
         totalPages: totalPages,
-        totalNews: totalNews,
+        totalNews: totalArchivedNews,
         loading: false,
       }));
     } catch (error) {
@@ -53,9 +58,10 @@ export const useNewsStore = create<NewsStore>((set) => ({
     }
   },
 
+  // NOTE: CREAR NUEVA NOTICIA
   createNew: async (newNews) => {
     try {
-      const response = await fetch("http://localhost:5000/api/news/createnew", {
+      const response = await fetch(`${API_URL}/news/createnew`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,17 +78,15 @@ export const useNewsStore = create<NewsStore>((set) => ({
     }
   },
 
+  // NOTE: ARCHIVAR NOTICIA
   archiveNew: async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/news/archiveNew/${id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await fetch(`${API_URL}/news/archiveNew/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
       if (!response.ok) {
         throw new Error("Failed to archive news");
@@ -108,17 +112,15 @@ export const useNewsStore = create<NewsStore>((set) => ({
     }
   },
 
+  // NOTE: ELIMINAR NOTICIA
   deleteNew: async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/news/deletenew/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
+      const response = await fetch(`${API_URL}/news/deletenew/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+      });
 
       if (!response.ok) {
         throw new Error("Failed to delete news");

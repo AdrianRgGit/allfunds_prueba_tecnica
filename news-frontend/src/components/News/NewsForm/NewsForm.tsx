@@ -5,27 +5,32 @@ import CustomButton from "../../Ui/CustomButton/CustomButton";
 import { useNewsStore } from "../../../store/newsStore";
 import { useNavigate } from "react-router-dom";
 
+// NOTE: VALIDACIÓN DE FORMULARIO CON YUP
 const NewsSchema = Yup.object({
   title: Yup.string(),
   description: Yup.string(),
   content: Yup.string(),
 });
 
+// NOTE: FORMULARIO DE CREACIÓN DE NOTICIAS
 const NewsForm = () => {
   const { createNew } = useNewsStore();
   const navigate = useNavigate();
 
+  // NOTE: VALORES POR DEFECTO
   const initialValues = {
     title: "",
     description: "",
     content: "",
   };
 
+  // NOTE: ENVÍO DEL FORMULARIO Y REDIRECCIONAMIENTO A HOME
   const handleSubmit = (values: any) => {
     createNew(values);
     navigate("/");
   };
 
+  // NOTE: UTILIZO FORMIK PARA CREAR EL FORMULARIO Y VALIDACIÓN CON YUP
   return (
     <Formik
       initialValues={initialValues}

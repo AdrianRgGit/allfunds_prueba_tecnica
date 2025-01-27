@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 
+// NOTE: UTILIZO ESLINT PARA MANTENER UN ORDEN Y UN CÓDIGO LIMPIO
 export default tseslint.config(
   { ignores: ['dist'] },
   {

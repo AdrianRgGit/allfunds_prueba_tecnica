@@ -9,6 +9,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
       <header className="relative mb-6">
         <div className="absolute inset-0 origin-top-left transform bg-gradient-to-r from-violet-600 to-indigo-600" />
         <div className="relative container mx-auto px-4 py-8">
+          {/* NOTE: ANIMACIÓN CON MOTION */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

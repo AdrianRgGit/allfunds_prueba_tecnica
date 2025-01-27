@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  // NOTE: Comento el StrictMode para trabajar en modo desarrollo y que no me repita llamadas
+  // NOTE: COMENTO EL STRICTMODE PARA TRABAJAR EN MODO DESARROLLO Y QUE NO ME REPITA LLAMADAS
   // <StrictMode>
-    <App />
+  <App />,
   // </StrictMode>,
 );

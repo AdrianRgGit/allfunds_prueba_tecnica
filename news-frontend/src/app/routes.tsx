@@ -5,6 +5,7 @@ import CreateNew from "../pages/CreateNew/CreateNew";
 import Error from "../pages/Error/Error";
 import NotFound from "../pages/NotFound/NotFound";
 
+// NOTE: RUTAS DE LA APLICACIÓN
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,7 @@ const routes = createBrowserRouter([
     errorElement: <Error />,
   },
 
+  // NOTE: RUTA NO ENCONTRADA
   {
     path: "*",
     element: <NotFound />,

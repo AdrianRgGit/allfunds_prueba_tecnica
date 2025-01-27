@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { ErrorProps } from "../../types/pages/error";
 
+// NOTE: COMPONENTE DE ERROR
 const Error: FC<ErrorProps> = ({ error }) => {
   return (
     <main className="flex h-[95vh] items-center justify-center">
