@@ -10,4 +10,7 @@ export interface NewsStore {
 
   getAllNews: (page?: number) => Promise<void>;
   getAllArchivedNews: (page?: number) => Promise<void>;
+  createNew: (newNews: NewsData) => Promise<void>;
+  archiveNew: (id: string) => Promise<void>;
+  deleteNew: (id: string) => Promise<void>;
 }

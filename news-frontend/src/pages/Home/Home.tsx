@@ -6,7 +6,7 @@ import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 
 const Home = () => {
   const { news, totalPages, loading, error, getAllNews } = useNewsStore();
-  const [localPage, setLocalPage] = useState(1);
+  const [localPage, setLocalPage] = useState(0);
 
   useEffect(() => {
     getAllNews(localPage);
@@ -31,6 +31,7 @@ const Home = () => {
       {news.map((newsItem) => (
         <NewsCard
           key={newsItem._id}
+          id={newsItem._id}
           title={newsItem.title}
           description={newsItem.description}
           content={newsItem.content}

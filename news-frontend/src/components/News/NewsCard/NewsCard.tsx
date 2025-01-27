@@ -3,8 +3,10 @@ import CustomButton from "../../Ui/CustomButton/CustomButton";
 import { FC } from "react";
 import { NewsCardProps } from "../../../types/news/newsCard";
 import CustomSmallElementWrapper from "../../Ui/CustomSmallElementWrapper/CustomSmallElementWrapper";
+import { useNewsStore } from "../../../store/newsStore";
 
 const NewsCard: FC<NewsCardProps> = ({
+  id,
   title,
   description,
   content,
@@ -12,6 +14,15 @@ const NewsCard: FC<NewsCardProps> = ({
   date,
   archivedDate,
 }) => {
+  const { archiveNew, deleteNew } = useNewsStore();
+
+  const handleArchive = (id: string) => {
+    archiveNew(id);
+  };
+
+  const handleDelete = (id: string) => {
+    deleteNew(id);
+  };
   return (
     <article className="space-y-2 rounded border p-2 shadow">
       <div className="flex items-center justify-between">
@@ -41,11 +52,11 @@ const NewsCard: FC<NewsCardProps> = ({
         </div>
 
         {archivedDate ? (
-          <CustomButton bg="bg-red-500">
+          <CustomButton bg="bg-red-500" onClick={() => handleDelete(id)}>
             <span>Eliminar noticia</span>
           </CustomButton>
         ) : (
-          <CustomButton>
+          <CustomButton onClick={() => handleArchive(id)}>
             <span>Archivar noticia</span>
           </CustomButton>
         )}

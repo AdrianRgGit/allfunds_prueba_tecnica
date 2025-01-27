@@ -7,7 +7,7 @@ import CustomButton from "../../components/Ui/CustomButton/CustomButton";
 const Archive = () => {
   const { archivedNews, totalPages, loading, error, getAllArchivedNews } =
     useNewsStore();
-  const [localPage, setLocalPage] = useState(1);
+  const [localPage, setLocalPage] = useState(0);
 
   useEffect(() => {
     getAllArchivedNews(localPage);
@@ -32,6 +32,7 @@ const Archive = () => {
       {archivedNews.map((newsItem) => (
         <NewsCard
           key={newsItem._id}
+          id={newsItem._id}
           title={newsItem.title}
           description={newsItem.description}
           content={newsItem.content}
