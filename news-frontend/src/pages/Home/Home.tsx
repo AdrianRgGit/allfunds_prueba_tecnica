@@ -18,6 +18,8 @@ const Home = () => {
     return <div>{error}</div>;
   }
 
+  console.log(news);
+
   return (
     <main className="mx-auto flex w-[80%] flex-col gap-y-2 overflow-y-auto pr-1">
       {news.map((newsItem) => (
@@ -27,7 +29,11 @@ const Home = () => {
           description={newsItem.description}
           content={newsItem.content}
           author={newsItem.author}
-          archivedDate={newsItem.archivedDate}
+          archivedDate={
+            newsItem.archiveDate
+              ? new Date(newsItem.archiveDate).toLocaleDateString()
+              : ""
+          }
           date={new Date(newsItem.createdAt).toLocaleDateString()}
         />
       ))}

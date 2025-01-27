@@ -4,7 +4,7 @@ export interface NewsData {
   content: string;
   author: string;
   date: string;
-  archivedDate?: string;
+  archiveDate?: string | null;
   _id: string;
   createdAt: string;
   updatedAt: string;
