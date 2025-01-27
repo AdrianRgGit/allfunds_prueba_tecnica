@@ -9,4 +9,5 @@ export interface NewsStore {
   error: string | null;
 
   getAllNews: (page?: number) => Promise<void>;
+  getAllArchivedNews: (page?: number) => Promise<void>;
 }

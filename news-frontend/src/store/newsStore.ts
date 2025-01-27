@@ -27,4 +27,21 @@ export const useNewsStore = create<NewsStore>((set) => ({
       set({ error: "Error fetching news", loading: false });
     }
   },
+
+  getAllArchivedNews: async (page = 1, limit = 3) => {
+    set({ loading: true });
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/news/getarchivednews?page=${page}&limit=${limit}`,
+      );
+      const data = await response.json();
+
+      set((state) => ({
+        archivedNews: [...state.archivedNews, ...data.news],
+        loading: false,
+      }));
+    } catch (error) {
+      set({ error: "Error fetching archived news", loading: false });
+    }
+  },
 }));

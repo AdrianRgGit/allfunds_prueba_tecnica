@@ -40,9 +40,15 @@ const NewsCard: FC<NewsCardProps> = ({
           </CustomSmallElementWrapper>
         </div>
 
-        <CustomButton>
-          <span>Archivar noticia</span>
-        </CustomButton>
+        {archivedDate ? (
+          <CustomButton bg="bg-red-500">
+            <span>Eliminar noticia</span>
+          </CustomButton>
+        ) : (
+          <CustomButton>
+            <span>Archivar noticia</span>
+          </CustomButton>
+        )}
       </div>
     </article>
   );
