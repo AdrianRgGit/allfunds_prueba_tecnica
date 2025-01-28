@@ -42,9 +42,11 @@ Este proyecto es una prueba técnica fullstack en la cuál hay que realizar una 
      - Cada noticia debe tener un botón **Archivar** que:
        - Mueva la noticia a la vista **Archived**.
        - La elimine de la vista **News (Home)**.
-  2. **Archived**:
+  2. **archived**:
      - Mostrar todas las noticias archivadas, ordenadas por fecha de archivo de más reciente a más antigua.
      - Cada noticia debe tener un botón **Eliminar** que elimine la noticia de la base de datos.
+  3. **create-new**:
+     - Formulario de creación básico de una noticia
 
 ### Backend
 El esquema de la colección **news** tiene el siguiente formato:
@@ -184,10 +186,14 @@ Debido a que era un poco libre a la hora de realizar la prueba técnica, he impl
 ### Frontend
 He utilizado Zustand para gestionar el estado global de la aplicación. Esto no era un requerimiento, pero creo que para trabajar con react es esencial contar con una librería como esta.
 
+Una vista nueva llamada create-new para la creación de una noticia sin tener que hacerlo desde la base de datos.
+
 ### Backend
 He realizado las peticiones GET con paginación para mejorar el rendimiento de la aplicación. Se que no era necesario pero para peticiones con muchos datos la optimización de la web puede verse afectada negativamente.
 
 He implantado un testing básico para los endpoints del back.
+
+Un seeder para probar la aplicación
 
 ## Mejoras futuras
 - Utilizar otro framework que complemente a React como NextJS
