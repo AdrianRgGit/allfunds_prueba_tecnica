@@ -41,3 +41,6 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 });
+
+// NOTE: EXPORTO EL SERVIDOR PARA UTILIZARLO EN EL TESTING
+module.exports = app;
