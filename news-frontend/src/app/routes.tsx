@@ -13,7 +13,7 @@ const routes = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/archive",
+    path: "/archived",
     element: <Archive />,
     errorElement: <Error />,
   },

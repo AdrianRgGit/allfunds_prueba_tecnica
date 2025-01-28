@@ -19,7 +19,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
           </motion.h1>
           <nav className="flex max-h-8 gap-8 text-lg">
             <CustomLink href="/" title="Inicio" />
-            <CustomLink href="/archive" title="Noticias Archivadas" />
+            <CustomLink href="/archived" title="Noticias Archivadas" />
             <CustomLink href="/create-new" title="Publicar" />
           </nav>
         </div>

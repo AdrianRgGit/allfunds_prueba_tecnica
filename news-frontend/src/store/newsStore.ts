@@ -44,8 +44,6 @@ export const useNewsStore = create<NewsStore>((set) => ({
       const data = await response.json();
       const { news, currentPage, totalPages, totalArchivedNews } = data;
 
-      console.log(data);
-
       set((state) => ({
         archivedNews: [...state.archivedNews, ...news],
         currentPage: currentPage,

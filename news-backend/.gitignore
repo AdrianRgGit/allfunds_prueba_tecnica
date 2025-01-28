@@ -1,13 +1,9 @@
 # Node modules
-/node_modules/
-
-# Dependencias de producción de NPM
-/package-lock.json
-/yarn.lock
+node_modules
+dist
+dist-ssr
+build
+*.local
 
 # Archivos de entorno
 .env
-
-# Archivos de compilación
-/dist/
-/build/
