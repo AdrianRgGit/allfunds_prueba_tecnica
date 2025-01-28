@@ -7,9 +7,8 @@
 ## Índice:
 
 - [Resumen](#resumen)
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Tecnologías](#tecnologías)
 - [Funcionalidades](#funcionalidades)
-- [Requisitos](#requisitos)
 - [Cómo utilizar el proyecto](#cómo-utilizar-el-proyecto)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Mejoras implantadas](#mejoras-implantadas)
@@ -21,7 +20,7 @@
 
 Este proyecto es una prueba técnica fullstack en la cuál hay que realizar una web dónde muestra una lista de noticias con sus elementos a los usuarios. Los usuarios pueden interactuar con estas archivando, borrando o publicando nuevas.
 
-## Teconlogías utilizadas
+## Tecnologías
 
 ### Frontend
 
